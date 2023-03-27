@@ -1,0 +1,44 @@
+﻿@using Pokedex.Core.Application.ViewModels.Tipo
+@model GuardarTipoViewModel
+
+@{
+    ViewData["Title"] = "Guardar Tipo";
+    var CreateMode = Model.Id == 0 ? true : false;
+}
+
+<div class="container-fluid">
+
+    <div class="row mb-3">
+
+        <div class="col-6 offset-3">
+
+            <div class="card">
+                <div class="card-header bg-black text-white mb-3">
+                    <h4>@(CreateMode ? "Creando un nuevo Tipo" : $"Editando el tipo {Model.Name}")</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <form method="post">
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Nombre del Tipo</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-success">@(CreateMode ? "Crear" : "Guardar")</button>
+                        <a asp-controller="Tipo" asp-action="Index" class="btn btn-outline-warning">Volver Atrás</a>
+
+                        <input asp-for="Id" type="hidden" />
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,72 @@
+﻿@using Pokedex.Core.Application.ViewModels.Pokemones;
+@model List<PokemonesViewModels>
+
+@{
+    ViewData["Title"] = "Mant. Pokemones";
+}
+
+<div class="mb-3">
+    <h3 class=" center text-success fw-bold"><i>Pokemons Mant.</i></h3>
+</div>
+
+<div class="container-fluid">
+
+    <div class="row mb-3">
+        <div class="col-12">
+            <a asp-controller="Pokemones" asp-action="Create" class="btn btn-outline-primary">
+                <i class="bi bi-plus-lg"></i>
+                Crear Nuevo 
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+
+        @if (Model == null || Model.Count == 0)
+        {
+
+            <h3>No hay Pokemones</h3>
+
+        }
+        else
+        {
+
+            @foreach (PokemonesViewModels item in Model)
+            {
+                <br />
+                <div class="col-md-4 mb-3">
+                  @*  <div class="card zoom"></div>*@
+                    <div class="card zoom border-dark" style="background-color:aliceblue">
+                        <div class="card-header">
+                            <h4 class="text-center fst-italic">@item.Name</h4>
+                        </div>
+                        <div class="card-body">
+                            <img class="bd-placeholder-img card-img-top" width="100" height="220" src="@item.ImageUrl" />
+                            <hr />
+                            <div>
+                                <p class="mb-2 fw-bold text-center"><i> De Tipo: @item.Tipo </i></p>
+                              @*  <p class="mb-2 fw-bold"><i> Tipo Secundario: @item.TipoSecundarioId </i></p>*@
+                                <hr />
+                                <p class="mb-3 fw-bold text-center"><i> Region: @item.Region </i></p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                            <div class="btn-group" role="group">
+                                <a asp-controller="Pokemones" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-success" type="button"><i class="bi bi-pencil-square"></i> Editar</a>
+                                <a asp-controller="Pokemones" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger" type="button"><i class="bi bi-trash"></i> Borrar</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+
+        }
+
+    </div>
+</div>
+
+

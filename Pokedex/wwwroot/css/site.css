@@ -1,0 +1,39 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.card{
+    margin: 1em;
+}
+
+.zoom:hover{
+    transform: scale(1.1)
+}
+
+.zoom{
+    transition:transform;
+}
+
+.left{
+    margin-left: 2.5%;
+    margin-right: 2%
+}
+
+.center{
+    text-align:center;
+}

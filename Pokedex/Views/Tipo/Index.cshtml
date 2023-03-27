@@ -1,0 +1,75 @@
+﻿@using Pokedex.Core.Application.ViewModels.Tipo
+@model List<TipoViewModel>
+
+@{
+    ViewData["Title"] = "Mant. Tipos";
+    int count = 0;
+}
+
+    <div class="row">
+        <h3 style="text-align:center;" class="fw-bold text-success"><i>Types Maint.</i></h3>
+    </div>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-12 mb-3">
+            <a asp-controller="Tipo" asp-action="Create" class="btn btn-outline-primary"> <i class="bi bi-plus-lg"></i> Crear Nuevo</a>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <table class="table table-bordered border-success">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+       
+        @foreach (TipoViewModel item in Model)
+        {
+                count++;
+
+            <tbody>
+                <tr>
+                    <td>@count</td>
+                    <td>@item.Name</td>
+                    <td>
+                        <div class="" role="">
+                            <a asp-controller="Tipo" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-success" type="button"> <i class="bi bi-pencil-square"></i> Editar</a>
+                            <a asp-controller="Tipo" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger" type="button"> <i class="bi bi-trash"></i> Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+
+            @*<div class="col-md-4 mb-3">
+                <div class="card zoom border-dark" style="background-color:aliceblue;">
+                    <div class="card-header">
+                        <center><h4><i>Tipo:</i></h4></center>
+                    </div>
+                    <div class="card-body">
+                        <h5><i>@item.Name</i></h5>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-group" role="group">
+                            <a asp-controller="Tipo" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-success" type="button"> <i class="bi bi-pencil-square"></i> Editar</a>
+                            <a asp-controller="Tipo" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger" type="button"> <i class="bi bi-trash"></i> Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        }
+
+        </table>
+
+
+    </div>
+
+</div>
+
+
+

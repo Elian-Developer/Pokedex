@@ -1,0 +1,41 @@
+﻿@using Pokedex.Core.Application.ViewModels.Region
+@model GuardarRegionViewModel
+
+@{
+    var CreateMode = Model.Id == 0 ? true : false;
+    ViewData["Title"] = "GuardarbRegion";
+}
+
+<div class="container-fluid">
+
+    <div class="row mb-3">
+        <div class="col-6 offset-3">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h4>@(CreateMode ? $"Creando una Nueva Región" : $"Editando la Region: {Model.Name}")</h4>
+                </div>
+                <div class="card-body">
+
+                    <form method="post" asp-controller="Region" asp-action="@(CreateMode ? "Create" : "Edit")">
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Nombre de la Región</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <input asp-for="Id" type="hidden" />
+
+                        <button type="submit" class="btn btn-outline-success">@(CreateMode ? "Crear" : "Guardar")</button>
+                        <a asp-controller="Region" asp-action="Index" class="btn btn-outline-warning">Volver atras</a>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
